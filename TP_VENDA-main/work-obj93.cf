@@ -1,0 +1,29 @@
+v 4
+file . "registrador.vhd" "094d66b2a94d8e895ad8198cdecd50cfdafa3434" "20230613125801.140":
+  entity registrador at 1( 0) + 0 on 31;
+  architecture behavioral of registrador at 19( 456) + 0 on 32;
+file . "change_calculation.vhd" "b00e51602c9d4bd46a3d60e501e415eac2a267ed" "20230613130744.523":
+  entity change_calculation at 1( 0) + 0 on 39;
+  architecture behavioral of change_calculation at 20( 512) + 0 on 40;
+file . "divisor_clock.vhd" "eb181be4769b6c24cac6d3ea0c572c6adf911a79" "20230613125657.858":
+  entity divisor_clock at 1( 0) + 0 on 23;
+  architecture behavioral of divisor_clock at 12( 224) + 0 on 24;
+file . "tb_fsm.vhd" "6d54a4382bc1d102cc0c7e39a5326aa7d237e5d2" "20230613130809.419":
+  entity tb_fsm at 5( 124) + 0 on 43;
+  architecture tb of tb_fsm at 11( 204) + 0 on 44;
+  configuration cfg_tb_fsm at 120( 4169) + 0 on 45;
+file . "fsm.vhd" "70077d94e690b9f3a5057af9b3c454e0a7cc7419" "20230613131831.670":
+  entity fsm at 315( 9337) + 0 on 48;
+  architecture arch_fsm of fsm at 343( 10150) + 0 on 49;
+file . "product_selection.vhd" "fcb432754e785ee7b238b8cc93d41942613e1ad4" "20230613125614.424":
+  entity product_selection at 1( 0) + 0 on 16;
+  architecture rtl of product_selection at 14( 282) + 0 on 17;
+file . "dispenser.vhd" "2249a0e71c00ff995a3d7fdfd3c923837992b014" "20230613125709.018":
+  entity dispenser at 1( 0) + 0 on 25;
+  architecture behavioral of dispenser at 11( 173) + 0 on 26;
+file . "coin_insertion.vhd" "6dc5c3a98bbd9122e9f12ae118f578cf6d1146c1" "20230613130106.548":
+  entity coin_insertion at 1( 0) + 0 on 35;
+  architecture behavioral of coin_insertion at 15( 301) + 0 on 36;
+file . "comparador.vhd" "269dd11f116b8463f63202238e0e2042ce87a23d" "20230613125812.335":
+  entity comparador at 1( 0) + 0 on 33;
+  architecture behavioral of comparador at 16( 337) + 0 on 34;
