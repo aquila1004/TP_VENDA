@@ -1,5 +1,6 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
+USE IEEE.numeric_std.ALL;
 
 entity fsm_tb is
 end fsm_tb;
@@ -11,6 +12,8 @@ architecture tb_arch of fsm_tb is
 
     -- Signals
     signal pin01, pin02, pin03, pin04, pin05, pin06, pin07, pin08, pin09, clk, enter, change_display, dispenser_display : std_logic;
+    signal segment_displayA, segment_displayB, segment_displayC, segment_displayD, segment_displayE, segment_displayF, segment_displayG : std_logic;
+    signal troco : unsigned(7 downto 0);
     signal s : std_logic;
 
     component fsm 
@@ -35,6 +38,8 @@ architecture tb_arch of fsm_tb is
             segment_displayE  : OUT STD_LOGIC;
             segment_displayF  : OUT STD_LOGIC;
             segment_displayG  : OUT STD_LOGIC;
+
+            troco             : INOUT unsigned(7 downto 0);
     
             --Saida da fsm
             s : OUT STD_LOGIC
@@ -58,7 +63,16 @@ begin
             enter => enter,
             change_display => change_display,
             dispenser_display => dispenser_display,
-            --segmento_display => (others => '0'),
+
+            segment_displayA => segment_displayA,
+            segment_displayB => segment_displayB,
+            segment_displayC => segment_displayC,
+            segment_displayD => segment_displayD,
+            segment_displayE => segment_displayE,
+            segment_displayF => segment_displayF,
+            segment_displayG => segment_displayG,
+
+            troco            => troco,
             s => s
         );
 
