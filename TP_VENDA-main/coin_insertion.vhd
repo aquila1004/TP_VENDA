@@ -17,19 +17,19 @@ architecture behavioral of coin_insertion is
 begin
     process (pino4, pino5, pino6, pino7)
     begin
-        if rising_edge(pino4) then
+        if (pino4 = '1') then
             coins <= coins + 1;
         end if;
         
-        if rising_edge(pino5) then
+        if (pino5 = '1') then
             coins <= coins + 2;
         end if;
         
-        if rising_edge(pino6) then
+        if (pino6 = '1') then
             coins <= coins + 5;
         end if;
         
-        if rising_edge(pino7) then
+        if (pino7 = '1') then
             coins <= coins + 10;
         end if;
         
