@@ -288,7 +288,7 @@ BEGIN
 
                 WHEN DIS =>
                     s <= '1';
-                    current_state <= INIT;
+                    next_state <= INIT;
                 END CASE;
         END PROCESS;
 

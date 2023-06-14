@@ -1,10 +1,10 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
 
-entity tb_fsm is
-end tb_fsm;
+entity fsm_tb is
+end fsm_tb;
 
-architecture tb_arch of tb_fsm is
+architecture tb_arch of fsm_tb is
 
     -- Constants
     constant CLK_PERIOD : time := 10 ns;
@@ -13,10 +13,37 @@ architecture tb_arch of tb_fsm is
     signal pin01, pin02, pin03, pin04, pin05, pin06, pin07, pin08, pin09, clk, enter, change_display, dispenser_display : std_logic;
     signal s : std_logic;
 
+    component fsm 
+        port (
+            pin01             : IN STD_LOGIC;
+            pin02             : IN STD_LOGIC;
+            pin03             : IN STD_LOGIC;
+            pin04             : IN STD_LOGIC;
+            pin05             : IN STD_LOGIC;
+            pin06             : IN STD_LOGIC;
+            pin07             : IN STD_LOGIC;
+            pin08             : IN STD_LOGIC; -- reset clock
+            pin09             : IN STD_LOGIC; -- reset geral
+            clk               : IN STD_LOGIC; -- clock
+            enter             : IN STD_LOGIC; -- enter
+            change_display    : OUT STD_LOGIC;
+            dispenser_display : OUT STD_LOGIC;
+            segment_displayA  : OUT STD_LOGIC;
+            segment_displayB  : OUT STD_LOGIC;
+            segment_displayC  : OUT STD_LOGIC;
+            segment_displayD  : OUT STD_LOGIC;
+            segment_displayE  : OUT STD_LOGIC;
+            segment_displayF  : OUT STD_LOGIC;
+            segment_displayG  : OUT STD_LOGIC;
+    
+            --Saida da fsm
+            s : OUT STD_LOGIC
+        );
+    end component;
 begin
 
     -- Instantiate the DUT
-    dut : entity work.fsm
+    dut : fsm
         port map (
             pin01 => pin01,
             pin02 => pin02,
@@ -30,11 +57,10 @@ begin
             clk => clk,
             enter => enter,
             change_display => change_display,
-            dispenser_display => dispenser_display
+            dispenser_display => dispenser_display,
             --segmento_display => (others => '0'),
-            --s => s
+            s => s
         );
-
 
     -- Clock process
     clk_process : process

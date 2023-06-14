@@ -1,0 +1,4 @@
+ghdl -a *.vhd 
+ghdl -e fsm_tb
+ghdl -r fsm_tb --vcd=test.vcd
+gtkwave test.vcd
