@@ -4,13 +4,13 @@ USE IEEE.numeric_std.ALL;
 
 ENTITY fsm IS
     PORT (
-        pin01             : IN STD_LOGIC;
-        pin02             : IN STD_LOGIC;
-        pin03             : IN STD_LOGIC;
-        pin04             : IN STD_LOGIC;
-        pin05             : IN STD_LOGIC;
-        pin06             : IN STD_LOGIC;
-        pin07             : IN STD_LOGIC;
+        pin01             : IN STD_LOGIC; -- Escolher produto
+        pin02             : IN STD_LOGIC; -- Escolher produto
+        pin03             : IN STD_LOGIC; -- Escolher produto
+        pin04             : IN STD_LOGIC; -- Insere moeda de valor 1
+        pin05             : IN STD_LOGIC; -- Insere moeda de valor 2
+        pin06             : IN STD_LOGIC; -- Insere moeda de valor 5
+        pin07             : IN STD_LOGIC; -- Insere moeda de valor 10
         pin08             : IN STD_LOGIC; -- reset clock
         pin09             : IN STD_LOGIC; -- reset geral
         clk               : IN STD_LOGIC; -- clock
@@ -24,6 +24,8 @@ ENTITY fsm IS
         segment_displayE  : OUT STD_LOGIC;
         segment_displayF  : OUT STD_LOGIC;
         segment_displayG  : OUT STD_LOGIC;
+
+        troco             : INOUT unsigned(7 DOWNTO 0);
 
         --Saida da fsm
         s : OUT STD_LOGIC
@@ -142,7 +144,7 @@ ARCHITECTURE arch_fsm OF fsm IS
     SIGNAL precoRegistrador        : unsigned(7 DOWNTO 0);
     SIGNAL saidaClock              : STD_LOGIC;
     SIGNAL saidaComparador         : STD_LOGIC;
-    SIGNAL troco                   : unsigned(7 DOWNTO 0);
+    --SIGNAL troco_signal            : unsigned(7 DOWNTO 0);
     SIGNAL MeuReset                : STD_LOGIC;
     SIGNAL DispenserActive         : STD_LOGIC;
 

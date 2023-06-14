@@ -27,16 +27,99 @@ begin
             change <= (others => '0');
         end if;
 
-        case change is
-            when "00000000" =>
+        -- A lógica abaixo foi realizada levando em consideração que o led acende no 0
+        case change is 
+            when "00000000" => -- Valor 0 do troco
                 segmentA <= '0';
-                segmentB <= '1';
-                segmentC <= '1';
+                segmentB <= '0';
+                segmentC <= '0';
+                segmentD <= '0';
+                segmentE <= '0';
+                segmentF <= '0';
+                segmentG <= '1';
+
+            when "00000001" => -- Valor 1 do troco
+                segmentA <= '1';
+                segmentB <= '0';
+                segmentC <= '0';
                 segmentD <= '1';
                 segmentE <= '1';
                 segmentF <= '1';
                 segmentG <= '1';
-            when "00000001" =>
+            
+            when "00000010" => -- Valor 2 do troco
+                segmentA <= '0';
+                segmentB <= '0';
+                segmentC <= '1';
+                segmentD <= '0';
+                segmentE <= '0';
+                segmentF <= '1';
+                segmentG <= '0';
+
+            when "00000011" => -- Valor 3 do troco
+                segmentA <= '0';
+                segmentB <= '0';
+                segmentC <= '0';
+                segmentD <= '0';
+                segmentE <= '1';
+                segmentF <= '1';
+                segmentG <= '0';
+
+            when "00000100" => -- Valor 4 do troco
+                segmentA <= '1';
+                segmentB <= '0';
+                segmentC <= '0';
+                segmentD <= '1';
+                segmentE <= '1';
+                segmentF <= '0';
+                segmentG <= '0';
+
+            when "00000101" => -- Valor 5 do troco
+                segmentA <= '0';
+                segmentB <= '1';
+                segmentC <= '0';
+                segmentD <= '0';
+                segmentE <= '1';
+                segmentF <= '0';
+                segmentG <= '0';
+            
+            when "00000110" => -- Valor 6 do troco
+                segmentA <= '0';
+                segmentB <= '1';
+                segmentC <= '0';
+                segmentD <= '0';
+                segmentE <= '0';
+                segmentF <= '0';
+                segmentG <= '0';
+            
+            when "00000111" => -- Valor 7 do troco
+                segmentA <= '0';
+                segmentB <= '0';
+                segmentC <= '0';
+                segmentD <= '1';
+                segmentE <= '1';
+                segmentF <= '1';
+                segmentG <= '1';
+
+            when "00001000" => -- Valor 8 do troco
+                segmentA <= '0';
+                segmentB <= '0';
+                segmentC <= '0';
+                segmentD <= '0';
+                segmentE <= '0';
+                segmentF <= '0';
+                segmentG <= '0';
+            
+            when "00001001" => -- Valor 9 do troco
+                segmentA <= '0';
+                segmentB <= '0';
+                segmentC <= '0';
+                segmentD <= '0';
+                segmentE <= '1';
+                segmentF <= '0';
+                segmentG <= '0';
+            
+            when others => -- Em outros valores, não acende nenhum led
                 segmentA <= '1';
                 segmentB <= '1';
                 segmentC <= '1';
@@ -44,71 +127,7 @@ begin
                 segmentE <= '1';
                 segmentF <= '1';
                 segmentG <= '1';
-            when "00000010" =>
-                segmentA <= '1';
-                segmentB <= '0';
-                segmentC <= '0';
-                segmentD <= '0';
-                segmentE <= '0';
-                segmentF <= '0';
-                segmentG <= '0';
-            when "00000011" =>
-                segmentA <= '0';
-                segmentB <= '0';
-                segmentC <= '0';
-                segmentD <= '0';
-                segmentE <= '0';
-                segmentF <= '0';
-                segmentG <= '0';
-            when "00000100" =>
-                segmentA <= '0';
-                segmentB <= '0';
-                segmentC <= '0';
-                segmentD <= '0';
-                segmentE <= '0';
-                segmentF <= '0';
-                segmentG <= '0';
-            when "00000101" =>
-                segmentA <= '0';
-                segmentB <= '0';
-                segmentC <= '0';
-                segmentD <= '0';
-                segmentE <= '0';
-                segmentF <= '0';
-                segmentG <= '0';
-            when "00000110" =>
-                segmentA <= '0';
-                segmentB <= '0';
-                segmentC <= '0';
-                segmentD <= '0';
-                segmentE <= '0';
-                segmentF <= '0';
-                segmentG <= '0';
-            when "00000111" =>
-                segmentA <= '0';
-                segmentB <= '0';
-                segmentC <= '0';
-                segmentD <= '0';
-                segmentE <= '0';
-                segmentF <= '0';
-                segmentG <= '0';
-            when "00001000" =>
-                segmentA <= '0';
-                segmentB <= '0';
-                segmentC <= '0';
-                segmentD <= '0';
-                segmentE <= '0';
-                segmentF <= '0';
-                segmentG <= '0';
-            when others =>
-                -- Valor do troco maior que 9, definir todos os segmentos como inválidos
-                segmentA <= '0';
-                segmentB <= '0';
-                segmentC <= '0';
-                segmentD <= '0';
-                segmentE <= '0';
-                segmentF <= '0';
-                segmentG <= '0';
         end case;
     end process;
 end architecture behavioral;
+
