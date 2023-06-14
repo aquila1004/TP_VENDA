@@ -1,51 +1,51 @@
 v 4
-file . "registrador_tb.vhd" "10a338f2f8ee8114d72f18b11c1a3d04623764e4" "20230614174234.378":
+file . "registrador_tb.vhd" "10a338f2f8ee8114d72f18b11c1a3d04623764e4" "20230614181342.384":
   entity registrador_tb at 1( 0) + 0 on 43;
   architecture testbench of registrador_tb at 8( 123) + 0 on 44;
-file . "registrador.vhd" "094d66b2a94d8e895ad8198cdecd50cfdafa3434" "20230614174234.377":
+file . "registrador.vhd" "094d66b2a94d8e895ad8198cdecd50cfdafa3434" "20230614181342.383":
   entity registrador at 1( 0) + 0 on 41;
   architecture behavioral of registrador at 19( 456) + 0 on 42;
-file . "product_selection_tb.vhd" "701c725d0de89c9f64f2e1fe9a29b1a77a68453a" "20230614174234.376":
+file . "product_selection_tb.vhd" "701c725d0de89c9f64f2e1fe9a29b1a77a68453a" "20230614181342.382":
   entity product_selection_tb at 1( 0) + 0 on 38;
   architecture tb of product_selection_tb at 8( 135) + 0 on 39;
   configuration cfg_tb_product_selection at 116( 3064) + 0 on 40;
-file . "product_selection.vhd" "fcb432754e785ee7b238b8cc93d41942613e1ad4" "20230614174234.375":
+file . "product_selection.vhd" "fcb432754e785ee7b238b8cc93d41942613e1ad4" "20230614181342.381":
   entity product_selection at 1( 0) + 0 on 36;
   architecture rtl of product_selection at 14( 282) + 0 on 37;
-file . "fsm_tb.vhd" "e27d14ffd98a5cca69b98b0443814eedbb277f28" "20230614174234.374":
+file . "fsm_tb.vhd" "e27d14ffd98a5cca69b98b0443814eedbb277f28" "20230614181342.380":
   entity fsm_tb at 1( 0) + 0 on 34;
   architecture tb_arch of fsm_tb at 8( 107) + 0 on 35;
-file . "fsm.vhd" "6d8737b868b5827fba7b41e0a1cfcc83f54a3baa" "20230614174234.373":
+file . "fsm.vhd" "6d8737b868b5827fba7b41e0a1cfcc83f54a3baa" "20230614181342.379":
   entity fsm at 1( 0) + 0 on 32;
   architecture arch_fsm of fsm at 35( 1285) + 0 on 33;
-file . "divisor_clock.vhd" "eb181be4769b6c24cac6d3ea0c572c6adf911a79" "20230614174234.370":
+file . "divisor_clock.vhd" "eb181be4769b6c24cac6d3ea0c572c6adf911a79" "20230614181342.376":
   entity divisor_clock at 1( 0) + 0 on 30;
   architecture behavioral of divisor_clock at 12( 224) + 0 on 31;
-file . "dispenser.vhd" "2249a0e71c00ff995a3d7fdfd3c923837992b014" "20230614174234.369":
+file . "dispenser.vhd" "2249a0e71c00ff995a3d7fdfd3c923837992b014" "20230614181342.376":
   entity dispenser at 1( 0) + 0 on 28;
   architecture behavioral of dispenser at 11( 173) + 0 on 29;
-file . "datapath_tb.vhd" "f0dec53056ce7ff8fb06057c152f0053e54b1909" "20230614174234.369":
+file . "datapath_tb.vhd" "f0dec53056ce7ff8fb06057c152f0053e54b1909" "20230614181342.375":
   entity datapath_tb at 1( 0) + 0 on 26;
   architecture testbench of datapath_tb at 8( 117) + 0 on 27;
-file . "datapath.vhd" "2555bb94a165e10946c064a97f037fab9ef4a0ec" "20230614174234.368":
+file . "datapath.vhd" "2555bb94a165e10946c064a97f037fab9ef4a0ec" "20230614181342.374":
   entity datapath at 1( 0) + 0 on 24;
   architecture behavioral of datapath at 21( 565) + 0 on 25;
-file . "comparador_tb.vhd" "5ac7caab3841fe5f40ae3be859dd6f46590f3084" "20230614174234.366":
+file . "comparador_tb.vhd" "5ac7caab3841fe5f40ae3be859dd6f46590f3084" "20230614181342.373":
   entity comparador_tb at 1( 0) + 0 on 22;
   architecture testbench of comparador_tb at 8( 121) + 0 on 23;
-file . "comparador.vhd" "269dd11f116b8463f63202238e0e2042ce87a23d" "20230614174234.365":
+file . "comparador.vhd" "269dd11f116b8463f63202238e0e2042ce87a23d" "20230614181342.372":
   entity comparador at 1( 0) + 0 on 20;
   architecture behavioral of comparador at 16( 337) + 0 on 21;
-file . "coin_insertion_tb.vhd" "b5a41bea6f27f050c24897d0ac0323184ea60f2f" "20230614174234.365":
+file . "coin_insertion_tb.vhd" "b5a41bea6f27f050c24897d0ac0323184ea60f2f" "20230614181342.371":
   entity coin_insertion_tb at 1( 0) + 0 on 17;
   architecture tb of coin_insertion_tb at 8( 129) + 0 on 18;
   configuration cfg_tb_coin_insertion at 90( 2327) + 0 on 19;
-file . "coin_insertion.vhd" "6dc5c3a98bbd9122e9f12ae118f578cf6d1146c1" "20230614174234.363":
+file . "coin_insertion.vhd" "c84d73f14207c7e62d880421e712c55e1e9cc1e5" "20230614181342.370":
   entity coin_insertion at 1( 0) + 0 on 15;
   architecture behavioral of coin_insertion at 15( 301) + 0 on 16;
-file . "change_calculation_tb.vhd" "19ef493a6b04ea1bc8a40a03aa8f9e406820b33b" "20230614174234.363":
+file . "change_calculation_tb.vhd" "19ef493a6b04ea1bc8a40a03aa8f9e406820b33b" "20230614181342.369":
   entity change_calculation_tb at 1( 0) + 0 on 13;
   architecture behavioral of change_calculation_tb at 8( 137) + 0 on 14;
-file . "change_calculation.vhd" "dc12a00bbeae75c1c27dac0fa282944448c91b20" "20230614174234.361":
+file . "change_calculation.vhd" "dc12a00bbeae75c1c27dac0fa282944448c91b20" "20230614181342.368":
   entity change_calculation at 1( 0) + 0 on 11;
   architecture behavioral of change_calculation at 20( 512) + 0 on 12;
