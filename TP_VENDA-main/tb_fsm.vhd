@@ -28,7 +28,7 @@ begin
             pin08 => pin08,
             pin09 => pin09,
             clk => clk,
-            --enter => enter,
+            enter => enter,
             change_display => change_display,
             dispenser_display => dispenser_display
             --segmento_display => (others => '0'),
