@@ -25,7 +25,7 @@ ENTITY fsm IS
         segment_displayF  : OUT STD_LOGIC;
         segment_displayG  : OUT STD_LOGIC;
 
-        troco             : INOUT unsigned(7 DOWNTO 0);
+        troco             : OUT unsigned(7 DOWNTO 0);
 
         --Saida da fsm
         s : OUT STD_LOGIC
@@ -56,7 +56,7 @@ ARCHITECTURE arch_fsm OF fsm IS
 		pin_segmentE         :  OUT  STD_LOGIC;
 		pin_segmentF         :  OUT  STD_LOGIC;
 		pin_segmentG         :  OUT  STD_LOGIC;
-		pin_troco            :  INOUT  unsigned(7 DOWNTO 0)
+		pin_troco            :  OUT  unsigned(7 DOWNTO 0)
     );
     end component;
 
@@ -67,6 +67,8 @@ ARCHITECTURE arch_fsm OF fsm IS
     SIGNAL precoRegistrador        : unsigned(7 DOWNTO 0);
     SIGNAL saidaClock              : STD_LOGIC;
     SIGNAL saidaComparador         : STD_LOGIC;
+	SIGNAL troco_rst					  : STD_LOGIC;
+	 
     --SIGNAL troco_signal            : unsigned(7 DOWNTO 0);
     --SIGNAL MeuReset                : STD_LOGIC;
     --SIGNAL DispenserActive         : STD_LOGIC;
@@ -92,6 +94,7 @@ BEGIN
         pin_segmentE         => segment_displayE,
         pin_segmentF         => segment_displayF,
         pin_segmentG         => segment_displayG,
+		  --pin_troco_rst		  => troco_rst,
         pin_troco            => troco
     );
     
@@ -108,22 +111,15 @@ BEGIN
 
     processo_combinacional : PROCESS (current_state)
     BEGIN
-        precoProdutoSelecionado <= "00000000";
-        somaMoedas              <= "00000000";
-        somaRegistrador         <= "00000000";
-        precoRegistrador        <= "00000000";
-        troco                   <= "00000000";
-        s                       <= '0';
-
         CASE current_state IS
             WHEN INIT =>
                 dispenser_display       <= '0';
+					 --troco_rst < '1';
                 saidaProdutoSelecionado <= "00000000";
                 precoProdutoSelecionado <= "00000000";
                 somaMoedas              <= "00000000";
                 somaRegistrador         <= "00000000";
                 precoRegistrador        <= "00000000";
-                troco                   <= "00000000";
                 next_state <= SELECT1;
 
             WHEN SELECT1 =>
@@ -171,7 +167,7 @@ BEGIN
                     END IF;
 
                 WHEN CHANGE => -- Nesse estado é calculado o valor do troco
-                    troco <= somaMoedas - precoRegistrador;
+                    --troco <= somaMoedas - precoRegistrador;
                     next_state <= DIS;
 
                 WHEN DIS =>
