@@ -37,105 +37,28 @@ ARCHITECTURE arch_fsm OF fsm IS
     TYPE state_type IS (INIT, SELECT1, LOAD, ADD, CHANGE, DIS);
     SIGNAL current_state, next_state : state_type;
 
-    ---------------------------------
-    -- COMPONENTE SELETOR PRODUTOS --
-    ---------------------------------
-
-    COMPONENT product_selection IS
-        PORT (
-            pino1         : IN STD_LOGIC;
-            pino2         : IN STD_LOGIC;
-            pino3         : IN STD_LOGIC;
-            produto_preco : OUT unsigned(7 DOWNTO 0)
-        );
-    END COMPONENT product_selection;
-
-    -----------------------------------
-    -- COMPONENTE INSERTOR DE MOEDAS --
-    -----------------------------------
-
-    COMPONENT coin_insertion IS
-        PORT (
-            pino4    : IN STD_LOGIC;
-            pino5    : IN STD_LOGIC;
-            pino6    : IN STD_LOGIC;
-            pino7    : IN STD_LOGIC;
-            coinSum  : INOUT unsigned(7 DOWNTO 0)
-        );
-    END COMPONENT coin_insertion;
-
-    ----------------------------    
-    -- COMPONENTE REGISTRADOR --
-    ----------------------------
-
-    COMPONENT registrador IS
-        GENERIC (
-            DATA_WIDTH : NATURAL := 8
-        );
-        PORT (
-            coin         : IN unsigned(DATA_WIDTH - 1 DOWNTO 0);
-            productPrice : IN unsigned(DATA_WIDTH - 1 DOWNTO 0);
-            clock        : IN STD_LOGIC;
-            reset        : IN STD_LOGIC;
-            sum          : OUT unsigned(DATA_WIDTH - 1 DOWNTO 0);
-            price        : OUT unsigned(DATA_WIDTH - 1 DOWNTO 0)
-        );
-    END COMPONENT registrador;
-
-    ----------------------  
-    -- COMPONENTE CLOCK --
-    ----------------------
-    COMPONENT divisor_clock IS
-        PORT (
-            clk50MHz : IN STD_LOGIC;
-            reset    : IN STD_LOGIC;
-            clk1Hz   : OUT STD_LOGIC
-        );
-    END COMPONENT divisor_clock;
-
-    ---------------------------  
-    -- COMPONENTE COMPARADOR --
-    ---------------------------
-    COMPONENT comparador IS
-        GENERIC (
-            NUM_COINS : INTEGER := 8
-        );
-        PORT (
-            coinSum      : IN unsigned(NUM_COINS - 1 DOWNTO 0);
-            productPrice : IN unsigned(NUM_COINS - 1 DOWNTO 0);
-            dispense     : OUT STD_LOGIC
-        );
-    END COMPONENT comparador;
-
-    ----------------------  
-    -- COMPONENTE TROCO --
-    ----------------------
-    COMPONENT change_calculation IS
-        PORT (
-            productPrice : IN unsigned(7 DOWNTO 0);
-            coinSum      : IN unsigned(7 DOWNTO 0);
-            change       : INOUT unsigned(7 DOWNTO 0);
-            segmentA     : out std_logic;
-            segmentB     : out std_logic;
-            segmentC     : out std_logic;
-            segmentD     : out std_logic;
-            segmentE     : out std_logic;
-            segmentF     : out std_logic;
-            segmentG     : out std_logic
-        );
-    END COMPONENT change_calculation;
-
-    --------------------------  
-    -- COMPONENTE DISPENSER --
-    --------------------------
-
-    COMPONENT dispenser IS
-        PORT (
-            state           : IN STD_LOGIC;
-            dispenserSignal : OUT STD_LOGIC
-        );
-
-    END COMPONENT dispenser;
+    component datapath
+    port (
+        moeda_1              :  IN  STD_LOGIC; -- Valor 1 da moeda
+		moeda_2              :  IN  STD_LOGIC; -- Valor 2 da moeda
+        moeda_3              :  IN  STD_LOGIC; -- Valor 5 da moeda
+		moeda_4              :  IN  STD_LOGIC; -- Valor 10 da moeda
+		pin01                :  IN  STD_LOGIC; -- Seleção do produto
+		pin02                :  IN  STD_LOGIC; -- Seleção do produto
+		pin03                :  IN  STD_LOGIC; -- Seleção do produto
+		clock01              :  IN  STD_LOGIC;
+		reset01              :  IN  STD_LOGIC;
+		pin_saida_comparador :  OUT  STD_LOGIC; -- Saida do comparador
+		pin_segmentA         :  OUT  STD_LOGIC;
+		pin_segmentB         :  OUT  STD_LOGIC;
+		pin_segmentC         :  OUT  STD_LOGIC;
+		pin_segmentD         :  OUT  STD_LOGIC;
+		pin_segmentE         :  OUT  STD_LOGIC;
+		pin_segmentF         :  OUT  STD_LOGIC;
+		pin_segmentG         :  OUT  STD_LOGIC;
+		pin_troco            :  INOUT  unsigned(7 DOWNTO 0)
+    );
+    end component;
 
     SIGNAL saidaProdutoSelecionado : unsigned(7 DOWNTO 0);
     SIGNAL precoProdutoSelecionado : unsigned(7 DOWNTO 0);
@@ -145,71 +68,33 @@ ARCHITECTURE arch_fsm OF fsm IS
     SIGNAL saidaClock              : STD_LOGIC;
     SIGNAL saidaComparador         : STD_LOGIC;
     --SIGNAL troco_signal            : unsigned(7 DOWNTO 0);
-    SIGNAL MeuReset                : STD_LOGIC;
-    SIGNAL DispenserActive         : STD_LOGIC;
+    --SIGNAL MeuReset                : STD_LOGIC;
+    --SIGNAL DispenserActive         : STD_LOGIC;
 
 BEGIN
 
-    --------------------------
-    -- PORT MAP COMPONENTES --
-    --------------------------
-
-    MeuClock : divisor_clock PORT MAP(
-        clk50MHz => clk,
-        reset    => pin08,
-        clk1Hz   => saidaClock
+    datapath_ints : datapath
+    port map (
+        moeda_1              => pin04,
+        moeda_2              => pin05,
+        moeda_3              => pin06,
+        moeda_4              => pin07,
+        pin01                => pin01,
+        pin02                => pin02,
+        pin03                => pin03,
+        clock01              => clk,
+        reset01              => pin09,
+        pin_saida_comparador => saidaComparador,
+        pin_segmentA         => segment_displayA,
+        pin_segmentB         => segment_displayB,
+        pin_segmentC         => segment_displayC,
+        pin_segmentD         => segment_displayD,
+        pin_segmentE         => segment_displayE,
+        pin_segmentF         => segment_displayF,
+        pin_segmentG         => segment_displayG,
+        pin_troco            => troco
     );
-    SelectProduct : product_selection PORT MAP(
-        pino1 => pin01,
-        pino2 => pin02,
-        pino3 => pin03,
-        produto_preco => saidaProdutoSelecionado
-    );
-
-    InsertCoin : coin_insertion PORT MAP(
-        pino4   => pin04,
-        pino5   => pin05,
-        pino6   => pin06,
-        pino7   => pin07,
-        coinSum => somaMoedas
-    );
-
-    MeuRegistrador : registrador PORT MAP(
-        coin         => somaMoedas,
-        productPrice => saidaProdutoSelecionado,
-        clock        => clk,
-        reset        => pin09,
-        sum          => somaRegistrador,
-        price        => precoRegistrador
-    );
-
-    VerificadorDeTroco : change_calculation PORT MAP(
-        productPrice => saidaProdutoSelecionado,
-        coinSum      => somaMoedas,
-        change       => troco,
-        segmentA     => segment_displayA,
-        segmentB     => segment_displayB,
-        segmentC     => segment_displayC,
-        segmentD     => segment_displayD,
-        segmentE     => segment_displayE,
-        segmentF     => segment_displayF,
-        segmentG     => segment_displayG
-    );
-
-    MeuComparador : comparador PORT MAP(
-        coinSum      => somaMoedas,
-        productPrice => saidaProdutoSelecionado,
-        dispense     => saidaComparador
-    );
-
-    MeuDispenser : dispenser PORT MAP(
-        state           => DispenserActive,
-        dispenserSignal => dispenser_display
-    );
-
-    ------------------------------
-    -- FIM PORT MAP COMPONENTES --
-    ------------------------------
+    
 
     processo_sequencial : PROCESS (clk, pin09)
     BEGIN
@@ -257,6 +142,7 @@ BEGIN
                     else 
                     next_state <= SELECT1;
 					END IF;
+
                 WHEN LOAD =>
                     IF (pin04 = '1' OR pin05 = '1' OR pin06 = '1' OR pin07 = '1') THEN -- Se alguma moeda for inserida, vai pro estado ADD
                         next_state <= ADD;
@@ -294,16 +180,16 @@ BEGIN
                 END CASE;
         END PROCESS;
 
-        PROCESS (saidaClock)
-            VARIABLE cnt : INTEGER RANGE 0 TO 2 ** 26 - 1;
-        BEGIN
-            IF (rising_edge(saidaClock)) THEN
-                IF (pin08 = '1') THEN
-                    cnt := 0;
-                ELSE
-                    cnt := cnt + 1;
-                END IF;
-            END IF;
-        END PROCESS;
+        -- PROCESS (saidaClock)
+        --     VARIABLE cnt : INTEGER RANGE 0 TO 2 ** 26 - 1;
+        -- BEGIN
+        --     IF (rising_edge(saidaClock)) THEN
+        --         IF (pin08 = '1') THEN
+        --             cnt := 0;
+        --         ELSE
+        --             cnt := cnt + 1;
+        --         END IF;
+        --     END IF;
+        -- END PROCESS;
 
     END arch_fsm;
