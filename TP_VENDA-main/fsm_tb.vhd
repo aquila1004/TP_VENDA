@@ -106,13 +106,13 @@ begin
         -- Feel free to modify this scenario according to your requirements
 
         -- Select product
-        pin01 <= '1'; -- Example: Product 1 selected
+        pin01 <= '0'; -- Example: Product 1 selected
         enter <= '1'; -- Example: Product 1
         wait for CLK_PERIOD * 1;
         pin01 <= '0';
 
         -- Insert coins
-        pin04 <= '1'; -- Example: Insert coin 1
+        pin04 <= '1'; -- Example: Insert coin
         wait for CLK_PERIOD * 1;
         pin04 <= '0';
 

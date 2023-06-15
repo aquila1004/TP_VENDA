@@ -2,8 +2,6 @@ LIBRARY ieee;
 USE ieee.std_logic_1164.all; 
 USE IEEE.numeric_std.ALL;
 
-LIBRARY work;
-
 ENTITY datapath IS 
 	PORT
 	(
@@ -24,7 +22,7 @@ ENTITY datapath IS
 		pin_segmentE         :  OUT  STD_LOGIC;
 		pin_segmentF         :  OUT  STD_LOGIC;
 		pin_segmentG         :  OUT  STD_LOGIC;
-		pin_troco            :  INOUT  unsigned(7 DOWNTO 0)
+		pin_troco            :  OUT  unsigned(7 DOWNTO 0)
 	);
 END datapath;
 
@@ -43,7 +41,7 @@ GENERIC (DATA_WIDTH : INTEGER
 END COMPONENT;
 
 COMPONENT change_calculation
-	PORT(change : INOUT unsigned(7 DOWNTO 0);
+	PORT(change : OUT unsigned(7 DOWNTO 0);
 		 coinSum : IN unsigned(7 DOWNTO 0);
 		 productPrice : IN unsigned(7 DOWNTO 0);
 		 segmentA : OUT STD_LOGIC;

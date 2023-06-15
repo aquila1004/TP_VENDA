@@ -6,7 +6,7 @@ entity change_calculation is
     port (
         productPrice: in unsigned(7 downto 0);
         coinSum: in unsigned(7 downto 0);
-        change: inout unsigned(7 downto 0);
+        change: out unsigned(7 downto 0);
         segmentA: out std_logic;
         segmentB: out std_logic;
         segmentC: out std_logic;
@@ -20,15 +20,18 @@ end entity change_calculation;
 architecture behavioral of change_calculation is
 begin
     process (productPrice, coinSum)
+	 
+	 variable var_change : unsigned(7 downto 0);
+	 
     begin
         if unsigned(coinSum) >= unsigned(productPrice) then
-            change <= coinSum - productPrice;
+            var_change := coinSum - productPrice;
         else
-            change <= (others => '0');
+            var_change := (others => '0');
         end if;
 
         -- A lógica abaixo foi realizada levando em consideração que o led acende no 0
-        case change is 
+        case var_change is 
             when "00000000" => -- Valor 0 do troco
                 segmentA <= '0';
                 segmentB <= '0';
@@ -128,6 +131,9 @@ begin
                 segmentF <= '1';
                 segmentG <= '1';
         end case;
+		  
+		  change <= var_change;
+		  
     end process;
 end architecture behavioral;
 
