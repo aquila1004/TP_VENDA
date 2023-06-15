@@ -21,7 +21,7 @@ architecture behavioral of change_calculation is
 begin
     process (productPrice, coinSum)
     begin
-        if coinSum >= productPrice then
+        if unsigned(coinSum) >= unsigned(productPrice) then
             change <= coinSum - productPrice;
         else
             change <= (others => '0');

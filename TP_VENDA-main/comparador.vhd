@@ -4,7 +4,7 @@ use IEEE.numeric_std.all;
 
 entity comparador is
     generic (
-        NUM_COINS : integer := 6
+        NUM_COINS : integer := 8
     );
     port (
         coinSum    : in  unsigned(NUM_COINS-1 downto 0);
@@ -17,7 +17,7 @@ architecture behavioral of comparador is
 begin
     process (coinSum, productPrice)
     begin
-        if coinSum >= productPrice then
+        if unsigned(coinSum) >= unsigned(productPrice) then
             dispense <= '1';
         else
             dispense <= '0';
