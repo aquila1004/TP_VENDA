@@ -86,7 +86,7 @@ BEGIN
         moeda_2_tb <= '0';
         moeda_3_tb <= '0';
         moeda_4_tb <= '1';
-        pin01_tb <= '1';
+        pin01_tb <= '0';
         wait for 10 ns;
     end process;
 
