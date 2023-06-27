@@ -1,51 +1,48 @@
-v 4
-file . "change_calculation.vhd" "fabb1aa5f4abc5ab5ef9dce6fd6fc14ced33428d" "20230615155242.566":
-  entity change_calculation at 1( 0) + 0 on 385;
-  architecture behavioral of change_calculation at 20( 510) + 0 on 386;
-file . "change_calculation_tb.vhd" "19ef493a6b04ea1bc8a40a03aa8f9e406820b33b" "20230615155242.566":
-  entity change_calculation_tb at 1( 0) + 0 on 387;
-  architecture behavioral of change_calculation_tb at 8( 137) + 0 on 388;
-file . "coin_insertion.vhd" "c84d73f14207c7e62d880421e712c55e1e9cc1e5" "20230615155242.567":
-  entity coin_insertion at 1( 0) + 0 on 389;
-  architecture behavioral of coin_insertion at 15( 301) + 0 on 390;
-file . "coin_insertion_tb.vhd" "b5a41bea6f27f050c24897d0ac0323184ea60f2f" "20230615155242.568":
-  entity coin_insertion_tb at 1( 0) + 0 on 391;
-  architecture tb of coin_insertion_tb at 8( 129) + 0 on 392;
-  configuration cfg_tb_coin_insertion at 90( 2327) + 0 on 393;
-file . "comparador.vhd" "b484b31ae629bf5b7ba908ea2a4ce9c3f6283ab4" "20230615155242.569":
-  entity comparador at 1( 0) + 0 on 394;
-  architecture behavioral of comparador at 16( 337) + 0 on 395;
-file . "comparador_tb.vhd" "5ac7caab3841fe5f40ae3be859dd6f46590f3084" "20230615155242.569":
-  entity comparador_tb at 1( 0) + 0 on 396;
-  architecture testbench of comparador_tb at 8( 121) + 0 on 397;
-file . "datapath.vhd" "07f94f477e9da4a60d61438d8a1ecc3c90054bff" "20230615155242.570":
-  entity datapath at 1( 0) + 0 on 398;
-  architecture bdf_type of datapath at 29( 1064) + 0 on 399;
-file . "datapath_tb.vhd" "f0dec53056ce7ff8fb06057c152f0053e54b1909" "20230615155242.571":
-  entity datapath_tb at 1( 0) + 0 on 400;
-  architecture testbench of datapath_tb at 8( 117) + 0 on 401;
-file . "dispenser.vhd" "2249a0e71c00ff995a3d7fdfd3c923837992b014" "20230615155242.571":
-  entity dispenser at 1( 0) + 0 on 402;
-  architecture behavioral of dispenser at 11( 173) + 0 on 403;
-file . "divisor_clock.vhd" "eb181be4769b6c24cac6d3ea0c572c6adf911a79" "20230615155242.572":
-  entity divisor_clock at 1( 0) + 0 on 404;
-  architecture behavioral of divisor_clock at 12( 224) + 0 on 405;
-file . "fsm.vhd" "6fbd2ee0f9c4dd4c42bceb07e299db999a548708" "20230615155242.573":
-  entity fsm at 1( 0) + 0 on 406;
-  architecture arch_fsm of fsm at 35( 1283) + 0 on 407;
-file . "fsm_tb.vhd" "0034e0e03abf341e4896ce4e3d7f9116c9a3fd68" "20230615155242.574":
-  entity fsm_tb at 1( 0) + 0 on 408;
-  architecture tb_arch of fsm_tb at 8( 107) + 0 on 409;
-file . "product_selection.vhd" "fcb432754e785ee7b238b8cc93d41942613e1ad4" "20230615155242.575":
-  entity product_selection at 1( 0) + 0 on 410;
-  architecture rtl of product_selection at 14( 282) + 0 on 411;
-file . "product_selection_tb.vhd" "701c725d0de89c9f64f2e1fe9a29b1a77a68453a" "20230615155242.576":
-  entity product_selection_tb at 1( 0) + 0 on 412;
-  architecture tb of product_selection_tb at 8( 135) + 0 on 413;
-  configuration cfg_tb_product_selection at 116( 3064) + 0 on 414;
-file . "registrador.vhd" "094d66b2a94d8e895ad8198cdecd50cfdafa3434" "20230615155242.576":
-  entity registrador at 1( 0) + 0 on 415;
-  architecture behavioral of registrador at 19( 456) + 0 on 416;
-file . "registrador_tb.vhd" "10a338f2f8ee8114d72f18b11c1a3d04623764e4" "20230615155242.577":
-  entity registrador_tb at 1( 0) + 0 on 417;
-  architecture testbench of registrador_tb at 8( 123) + 0 on 418;
+v 3
+file . "change_calculation.vhd" "20230627002710.000" "20230626222957.906":
+  entity change_calculation at 1( 0) + 0 on 750;
+  architecture behavioral of change_calculation at 21( 590) + 0 on 751;
+file . "change_calculation_tb.vhd" "20230619201002.000" "20230626222957.908":
+  architecture behavioral of change_calculation_tb at 8( 144) + 0 on 753;
+file . "coin_insertion.vhd" "20230627012954.000" "20230626222957.909":
+  entity coin_insertion at 1( 0) + 0 on 754;
+  architecture behavioral of coin_insertion at 16( 382) + 0 on 755;
+file . "coin_insertion_tb.vhd" "20230627002356.000" "20230626222957.911":
+  entity coin_insertion_tb at 1( 0) + 0 on 756;
+  architecture tb_arch of coin_insertion_tb at 8( 136) + 0 on 757;
+file . "comparador.vhd" "20230619201002.000" "20230626222957.912":
+  entity comparador at 1( 0) + 0 on 758;
+  architecture behavioral of comparador at 16( 352) + 0 on 759;
+file . "comparador_tb.vhd" "20230619201002.000" "20230626222957.912":
+  entity comparador_tb at 1( 0) + 0 on 760;
+  architecture testbench of comparador_tb at 8( 128) + 0 on 761;
+file . "datapath.vhd" "20230627011152.000" "20230626222957.913":
+  entity datapath at 1( 0) + 0 on 762;
+  architecture bdf_type of datapath at 28( 1172) + 0 on 763;
+file . "datapath_tb.vhd" "20230627010710.000" "20230626222957.914":
+  entity datapath_tb at 1( 0) + 0 on 764;
+  architecture tb_arch of datapath_tb at 8( 117) + 0 on 765;
+file . "dispenser.vhd" "20230619201002.000" "20230626222957.914":
+  entity dispenser at 1( 0) + 0 on 766;
+  architecture behavioral of dispenser at 11( 183) + 0 on 767;
+file . "divisor_clock.vhd" "20230613203814.000" "20230626222957.915":
+  entity divisor_clock at 1( 0) + 0 on 768;
+  architecture behavioral of divisor_clock at 12( 224) + 0 on 769;
+file . "fsm.vhd" "20230616132046.000" "20230626222957.916":
+  entity fsm at 1( 0) + 0 on 770;
+  architecture arch_fsm of fsm at 35( 1317) + 0 on 771;
+file . "fsm_tb.vhd" "20230616122910.000" "20230626222957.916":
+  entity fsm_tb at 1( 0) + 0 on 772;
+  architecture tb_arch of fsm_tb at 8( 107) + 0 on 773;
+file . "product_selection.vhd" "20230626234546.000" "20230626222957.917":
+  entity product_selection at 1( 0) + 0 on 774;
+  architecture rtl of product_selection at 15( 358) + 0 on 775;
+file . "product_selection_tb.vhd" "20230627002834.000" "20230626222957.918":
+  entity change_calculation_tb at 1( 0) + 0 on 776;
+  architecture tb_architecture of change_calculation_tb at 8( 144) + 0 on 777;
+file . "registrador.vhd" "20230615193742.000" "20230626222957.918":
+  entity registrador at 1( 0) + 0 on 778;
+  architecture behavioral of registrador at 19( 474) + 0 on 779;
+file . "registrador_tb.vhd" "20230613203814.000" "20230626222957.919":
+  entity registrador_tb at 1( 0) + 0 on 780;
+  architecture testbench of registrador_tb at 8( 130) + 0 on 781;

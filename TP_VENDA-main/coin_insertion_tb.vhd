@@ -5,89 +5,58 @@ use ieee.numeric_std.all;
 entity coin_insertion_tb is
 end entity coin_insertion_tb;
 
-architecture tb of coin_insertion_tb is
-    component coin_insertion
+architecture tb_arch of coin_insertion_tb is
+    component coin_insertion is
         port (
             pino4: in std_logic;
             pino5: in std_logic;
             pino6: in std_logic;
             pino7: in std_logic;
-            coinSum: inout unsigned(6 downto 0)
+            enable: in std_logic;
+            coinSum: inout unsigned(7 downto 0)
         );
     end component coin_insertion;
-    
-    signal pino4_tb: std_logic := '0';
-    signal pino5_tb: std_logic := '0';
-    signal pino6_tb: std_logic := '0';
-    signal pino7_tb: std_logic := '0';
-    signal coinSum_tb: unsigned(6 downto 0);
-    
-    constant TbPeriod : time := 1000 ns;
-    signal TbClock : std_logic := '0';
-    signal TbSimEnded : std_logic := '0';
+
+    signal pino4_tb, pino5_tb, pino6_tb, pino7_tb, enable_tb: std_logic;
+    signal coinSum_tb: unsigned(7 downto 0);
+
 begin
-    dut: coin_insertion
+    uut: coin_insertion
         port map (
             pino4 => pino4_tb,
             pino5 => pino5_tb,
             pino6 => pino6_tb,
             pino7 => pino7_tb,
+            enable => enable_tb,
             coinSum => coinSum_tb
         );
-    
-    -- Clock generation
-    TbClock <= not TbClock after TbPeriod/2 when TbSimEnded /= '1' else '0';
-    
-    stimuli: process
+
+    stimulus: process
     begin
-        -- Initialization
-        pino4_tb <= '0';
-        pino5_tb <= '0';
+        -- Teste 1 (enable ativo)
+        pino4_tb <= '1';
+        pino5_tb <= '1';
         pino6_tb <= '0';
         pino7_tb <= '0';
+        enable_tb <= '1';
+        wait for 10 ns;
         
-        -- Inserting coins
-        pino4_tb <= '1'; -- Coin of value 1
-        wait for TbPeriod;
+        -- Verifica o valor de coinSum_tb
+        assert coinSum_tb = to_unsigned(3, 8) report "Erro: Valor incorreto de coinSum_tb no Teste 1" severity error;
         
-        pino5_tb <= '1'; -- Coin of value 2
-        wait for TbPeriod;
+        -- Teste 2 (enable inativo)
+        pino4_tb <= '0';
+        pino5_tb <= '0';
+        pino6_tb <= '1';
+        pino7_tb <= '0';
+        enable_tb <= '0';
+        wait for 10 ns;
         
-        pino6_tb <= '1'; -- Coin of value 5
-        wait for TbPeriod;
+        -- Verifica o valor de coinSum_tb
+        assert coinSum_tb = to_unsigned(0, 8) report "Erro: Valor incorreto de coinSum_tb no Teste 2" severity error;
         
-        pino7_tb <= '1'; -- Coin of value 10
-        wait for TbPeriod;
-        
-        pino4_tb <= '0'; -- Stop inserting coins
-        
-        wait for 100 * TbPeriod;
-        
-        -- Stop the clock and end the simulation
-        TbSimEnded <= '1';
+        -- Adicione mais testes conforme necessário
+
         wait;
     end process;
-    
-    -- Check if the sum of all coins is correct
-    check_sum: process
-    begin
-        wait until TbSimEnded = '1';
-        
-        -- Expected sum: 1 + 2 + 5 + 10 = 18
-        if coinSum_tb /= unsigned'("010010") then
-            report "Incorrect sum of coins!" severity error;
-        else
-            report "Sum of coins is correct!" severity note;
-        end if;
-        
-        wait;
-    end process;
-    
-end tb;
-
--- Configuration block (may not be necessary depending on the simulator)
-
-configuration cfg_tb_coin_insertion of coin_insertion_tb is
-    for tb
-    end for;
-end cfg_tb_coin_insertion;
+end architecture tb_arch;

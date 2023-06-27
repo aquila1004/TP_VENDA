@@ -1,0 +1,49 @@
+$date
+  Mon Jun 26 22:30:40 2023
+$end
+$version
+  GHDL v0
+$end
+$timescale
+  1 fs
+$end
+$var reg 1 ! pino4_tb $end
+$var reg 1 " pino5_tb $end
+$var reg 1 # pino6_tb $end
+$var reg 1 $ pino7_tb $end
+$var reg 1 % enable_tb $end
+$var reg 8 & coinsum_tb[7:0] $end
+$scope module uut $end
+$var reg 1 ' pino4 $end
+$var reg 1 ( pino5 $end
+$var reg 1 ) pino6 $end
+$var reg 1 * pino7 $end
+$var reg 1 + enable $end
+$var reg 8 , coinsum[7:0] $end
+$var reg 8 - coins[7:0] $end
+$upscope $end
+$enddefinitions $end
+#0
+1!
+1"
+0#
+0$
+1%
+b00000000 &
+1'
+1(
+0)
+0*
+1+
+b00000000 ,
+b00000000 -
+#10000000
+0!
+0"
+1#
+0%
+0'
+0(
+1)
+0+
+#20000000

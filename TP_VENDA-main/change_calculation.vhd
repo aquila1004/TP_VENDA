@@ -13,19 +13,22 @@ entity change_calculation is
         segmentD: out std_logic;
         segmentE: out std_logic;
         segmentF: out std_logic;
-        segmentG: out std_logic
+        segmentG: out std_logic;
+        enable: in std_logic -- Sinal de enable adicionado
     );
 end entity change_calculation;
 
 architecture behavioral of change_calculation is
 begin
-    process (productPrice, coinSum)
-	 
-	 variable var_change : unsigned(7 downto 0);
-	 
+    process (productPrice, coinSum, enable) -- Adicionado o sinal de enable ao processo
+        variable var_change : unsigned(7 downto 0);
     begin
-        if unsigned(coinSum) >= unsigned(productPrice) then
-            var_change := coinSum - productPrice;
+        if enable = '1' then -- Verifica se o enable está ativo
+            if unsigned(coinSum) >= unsigned(productPrice) then
+                var_change := coinSum - productPrice;
+            else
+                var_change := (others => '0');
+            end if;
         else
             var_change := (others => '0');
         end if;
@@ -131,9 +134,7 @@ begin
                 segmentF <= '1';
                 segmentG <= '1';
         end case;
-		  
-		  change <= var_change;
-		  
+          
+        change <= var_change;
     end process;
 end architecture behavioral;
-
