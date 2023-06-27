@@ -68,10 +68,6 @@ ARCHITECTURE arch_fsm OF fsm IS
     SIGNAL saidaClock              : STD_LOGIC;
     SIGNAL saidaComparador         : STD_LOGIC;
 	SIGNAL troco_rst					  : STD_LOGIC;
-	 
-    --SIGNAL troco_signal            : unsigned(7 DOWNTO 0);
-    --SIGNAL MeuReset                : STD_LOGIC;
-    --SIGNAL DispenserActive         : STD_LOGIC;
 
 BEGIN
 
@@ -123,69 +119,16 @@ BEGIN
                 next_state <= SELECT1;
 
             WHEN SELECT1 =>
-                IF (pin01 = '0' AND pin02 = '0' AND pin03 = '0' and enter = '1') THEN
-                    next_state <= LOAD;
-                ELSIF (pin01 = '0' AND pin02 = '0' AND pin03 = '1' and enter = '1') THEN
-                    next_state <= LOAD;
-                ELSIF (pin01 = '0' AND pin02 = '1' AND pin03 = '0' and enter = '1') THEN
-                    next_state <= LOAD;
-                ELSIF (pin01 = '0' AND pin02 = '1' AND pin03 = '1' and enter = '1') THEN
-                    next_state <= LOAD;
-                ELSIF (pin01 = '1' AND pin02 = '0' AND pin03 = '0' and enter = '1') THEN
-                    next_state <= LOAD;
-                ELSIF (pin01 = '1' AND pin02 = '0' AND pin03 = '1' and enter = '1') THEN
-                    next_state <= LOAD;
-                    else 
                     next_state <= SELECT1;
-					END IF;
-
                 WHEN LOAD =>
-                    IF (pin04 = '1' OR pin05 = '1' OR pin06 = '1' OR pin07 = '1') THEN -- Se alguma moeda for inserida, vai pro estado ADD
-                        next_state <= ADD;
-
-                    ELSIF (somaMoedas < precoRegistrador) THEN
-                        next_state <= LOAD;
-
-                    ELSIF (somaMoedas >= precoRegistrador) THEN
-                        next_state <= CHANGE;
-                    END IF;
-
-                WHEN ADD => -- Nesse estado é somado o valor das moedas inseridas com o preço que está no registrador
-                    IF (pin04 = '1') THEN
-                        precoRegistrador <= precoRegistrador + "00000001"; -- Valor 1 da moeda
-
-                    ELSIF (pin05 = '1') THEN
-                        precoRegistrador <= precoRegistrador + "00000010"; -- Valor 2 da moeda
-
-                    ELSIF (pin06 = '1') THEN
-                        precoRegistrador <= precoRegistrador + "00000101"; -- Valor 5 da moeda
-
-                    ELSIF (pin07 = '1') THEN
-                        precoRegistrador <= precoRegistrador + "00001010"; -- Valor 10 da moeda
-
-                        next_state <= LOAD;
-                    END IF;
-
-                WHEN CHANGE => -- Nesse estado é calculado o valor do troco
-                    --troco <= somaMoedas - precoRegistrador;
+                    next_state <= LOAD;
+                WHEN ADD => 
+                    next_state <= LOAD;
+                WHEN CHANGE => 
                     next_state <= DIS;
 
                 WHEN DIS =>
-                    s <= '1';
                     next_state <= INIT;
                 END CASE;
         END PROCESS;
-
-        -- PROCESS (saidaClock)
-        --     VARIABLE cnt : INTEGER RANGE 0 TO 2 ** 26 - 1;
-        -- BEGIN
-        --     IF (rising_edge(saidaClock)) THEN
-        --         IF (pin08 = '1') THEN
-        --             cnt := 0;
-        --         ELSE
-        --             cnt := cnt + 1;
-        --         END IF;
-        --     END IF;
-        -- END PROCESS;
-
-    END arch_fsm;
+END arch_fsm;
