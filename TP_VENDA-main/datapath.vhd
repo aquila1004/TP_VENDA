@@ -143,7 +143,7 @@ BEGIN
 
         -- Aplique os valores de enable
         enable_coin_insertion <= '1';
-        enable_product_selection <= '0';
+        enable_product_selection <= '1';
         enable_change_calculation <= '1';
 
         wait;

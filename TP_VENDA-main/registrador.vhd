@@ -26,7 +26,7 @@ begin
             sum_reg <= (others => '0');
             price_reg <= (others => '0');
         elsif rising_edge(clock) then
-            sum_reg <= sum_reg + coin;
+            sum_reg <= coin;
             price_reg <= productPrice;
         end if;
     end process;

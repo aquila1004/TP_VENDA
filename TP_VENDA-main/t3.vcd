@@ -1,5 +1,5 @@
 $date
-  Mon Jun 26 21:29:06 2023
+  Tue Jun 27 10:12:21 2023
 $end
 $version
   GHDL v0
@@ -7,74 +7,41 @@ $end
 $timescale
   1 fs
 $end
-$var reg 8 ! productprice_tb[7:0] $end
-$var reg 8 " coinsum_tb[7:0] $end
-$var reg 8 # change_tb[7:0] $end
-$var reg 1 $ segmenta_tb $end
-$var reg 1 % segmentb_tb $end
-$var reg 1 & segmentc_tb $end
-$var reg 1 ' segmentd_tb $end
-$var reg 1 ( segmente_tb $end
-$var reg 1 ) segmentf_tb $end
-$var reg 1 * segmentg_tb $end
-$var reg 1 + enable_tb $end
+$var reg 1 ! pino4_tb $end
+$var reg 1 " pino5_tb $end
+$var reg 1 # pino6_tb $end
+$var reg 1 $ pino7_tb $end
+$var reg 1 % enable_tb $end
+$var reg 8 & coinsum_tb[7:0] $end
 $scope module uut $end
-$var reg 8 , productprice[7:0] $end
-$var reg 8 - coinsum[7:0] $end
-$var reg 8 . change[7:0] $end
-$var reg 1 / segmenta $end
-$var reg 1 0 segmentb $end
-$var reg 1 1 segmentc $end
-$var reg 1 2 segmentd $end
-$var reg 1 3 segmente $end
-$var reg 1 4 segmentf $end
-$var reg 1 5 segmentg $end
-$var reg 1 6 enable $end
+$var reg 1 ' pino4 $end
+$var reg 1 ( pino5 $end
+$var reg 1 ) pino6 $end
+$var reg 1 * pino7 $end
+$var reg 1 + enable $end
+$var reg 8 , coinsum[7:0] $end
 $upscope $end
 $enddefinitions $end
 #0
-b00000010 !
-b00000110 "
-b00000100 #
-1$
-0%
-0&
+1!
+1"
+0#
+0$
+1%
+b00000011 &
 1'
 1(
 0)
 0*
 1+
-b00000010 ,
-b00000110 -
-b00000100 .
-1/
-00
-01
-12
-13
-04
-05
-16
+b00000011 ,
 #10000000
-b00000011 !
-b00000001 "
-b00000000 #
-0$
+0!
+0"
+1#
+0%
 0'
 0(
-1*
-b00000011 ,
-b00000001 -
-b00000000 .
-0/
-02
-03
-15
-#20000000
-b00000101 !
-b00000110 "
+1)
 0+
-b00000101 ,
-b00000110 -
-06
-#30000000
+#20000000

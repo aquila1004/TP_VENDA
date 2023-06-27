@@ -83,8 +83,8 @@ BEGIN
         wait for 10 ns;
         clock01_tb <= '1';
         moeda_1_tb <= '1';
-        moeda_2_tb <= '1';
-        moeda_3_tb <= '1';
+        moeda_2_tb <= '0';
+        moeda_3_tb <= '0';
         moeda_4_tb <= '1';
         pin01_tb <= '1';
         wait for 10 ns;
